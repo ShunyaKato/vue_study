@@ -19,5 +19,10 @@ const vm = new Vue({
       });
       this.newItemTitle = '';
     },
+    deleteTodo() {
+      this.items = this.items.filter(function (item) {
+        return item.isChecked === false;
+      });
+    },
   }
 })

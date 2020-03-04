@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>vue_study</title>
   <style>
-    .done {
+    .deleteLine {
       text-decoration: line-through;
     }
   </style>
@@ -18,9 +18,10 @@
     <p>
       <input type="text" placeholder="TODOを入力しましょう！" v-model="newItemTitle" v-on:keyup.enter="addTodo">
     </p>
+    <button v-on:click="deleteTodo()">チェック済みの項目を削除する</button>
     <ul>
       <li v-for="item in items">
-        <label v-bind:class="{done: item.isChecked}">
+        <label v-bind:class="{deleteLine: item.isChecked}">
           <input type="checkbox" v-model="item.isChecked">{{ item.title }}
         </label>
       </li>
