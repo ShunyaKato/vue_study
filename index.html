@@ -10,9 +10,13 @@
 <body>
 
   <div id="app">
-    <p>{{ counter }}</p>
-    <button v-on:click="add">追加(関数)</button>
-    <button v-on:click="counter++">追加(JavaScriptの文)</button>
+    <ul>
+      <li v-for="item in items">
+        <label>
+          <input type="checkbox" v-model="item.isChecked">{{ item.title }}
+        </label>
+      </li>
+    </ul>
   </div>
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
