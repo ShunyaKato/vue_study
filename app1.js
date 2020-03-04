@@ -1,7 +1,10 @@
 const vm = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue.js!',
-    isChecked: true,
+    items: [
+      { title: '項目１', id: 1 },
+      { title: '項目２', id: 2 },
+      { title: '項目３', id: 3 },
+    ]
   }
 })

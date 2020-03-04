@@ -10,9 +10,9 @@
 <body>
 
   <div id="app">
-    <input type="text" v-model="message">
-    <input type="checkbox" v-model="isChecked">
-    <p>{{ message }} {{ isChecked }}</p>
+    <ul>
+      <li v-for="item in items">{{ item.title }}</li>
+    </ul>
   </div>
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
