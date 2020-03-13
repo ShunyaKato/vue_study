@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cod_app</title>
+</head>
+
+<body>
+  <div id="app">
+    <form>
+      <div v-for="(selectItem, i) in selectItems">
+        <div v-if="selectItem.id === 'weapon'">
+          <label for="">{{i}}{{selectItem.title}}：</label>
+          <select v-on:change="weaponTypeSelect" v-model="selectedWeaponType">
+            <option value="">武器種を選んでください</option>
+            <option v-for="list in selectItem.lists">{{list.weaponType}}</option>
+          </select>
+          <select v-on:change="weaponSelect">
+            <option v-if="selectedWeapons.length === 0">←を選んでください</option>
+            <option v-for="item in selectedWeapons.items">{{item}}</option>
+          </select>
+          <p>{{selected}}</p>
+        </div>
+        <div v-else>
+          <label for="">{{i}}{{selectItem.title}}：</label>
+          <select v-on:change="itemSelect" v-bind:data-id="selectItem.id">
+            <option value="">{{selectItem.title}}を選択してください</option>
+            <option v-for="list in selectItem.lists">{{list}}</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="">キル数：</label>
+        <input type="text" v-model.number="killCount">
+        <p>{{killCount}}</p>
+        <label for="">デス数：</label>
+        <input type="text" v-model.number="deathCount">
+        <p>{{deathCount}}</p>
+      </div>
+      <input type="submit">
+    </form>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+  <script src="./app1.js"></script>
+</body>
+
+</html>
