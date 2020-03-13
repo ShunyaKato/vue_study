@@ -39,9 +39,10 @@
         <label for="">デス数：</label>
         <input type="text" v-model.number="deathCount">
       </div>
-      <input type="button" value="登録" v-on:click="combatRecordSave">
+      <button type="button" class="btn btn-primary" v-on:click="saveCombatRecord">登録</button>
+      <button type="button" class="btn btn-secondary" v-on:click="deleteCombatRecord">リセット</button>
     </form>
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <th>ゲームモード</th>
       <th>マップ</th>
       <th>武器</th>

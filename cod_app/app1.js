@@ -74,14 +74,31 @@ new Vue({
       // console.log(this.selectedItems);
       console.log(this.combatRecords);
     },
-    combatRecordSave() {
+    saveLocalCombatRecords() {
+      localStorage.setItem('combatRecords', JSON.stringify(this.combatRecords));
+    },
+    loadLocalCombatRecords() {
+      this.combatRecords = JSON.parse(localStorage.getItem('combatRecords'));
+      if (!this.combatRecords) {
+        this.combatRecords = [];
+      }
+    },
+    saveCombatRecord() {
       this.selectedItems.kill = this.killCount;
       // console.log(this.selectedItems);
       this.selectedItems.death = this.deathCount;
-      this.selectedItems.killDeathRaito = this.killCount / this.deathCount;
+      this.selectedItems.killDeathRaito = parseInt((this.killCount / this.deathCount) * 10, 10) / 10;
       // console.log(this.selectedItems);
       this.combatRecords.unshift(Object.assign({}, this.selectedItems));
-      console.log(this.combatRecords);
+      // console.log(this.combatRecords);
+      this.saveLocalCombatRecords();
     },
+    deleteCombatRecord() {
+      this.combatRecords = [];
+      this.saveLocalCombatRecords();
+    }
+  },
+  mounted: function () {
+    this.loadLocalCombatRecords();
   }
 });
