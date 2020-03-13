@@ -39,8 +39,24 @@
         <input type="text" v-model.number="deathCount">
         <p>{{deathCount}}</p>
       </div>
-      <input type="submit">
+      <input type="button" value="登録" v-on:click="combatRecordSave">
     </form>
+    <table>
+      <th>ゲームモード</th>
+      <th>マップ</th>
+      <th>武器</th>
+      <th>キル</th>
+      <th>デス</th>
+      <th>K/D</th>
+      <tr v-for="combatRecord in combatRecords">
+        <td>{{combatRecord.mode}}</td>
+        <td>{{combatRecord.map}}</td>
+        <td>{{combatRecord.weaponType}}：{{combatRecord.weapon}}</td>
+        <td>{{combatRecord.kill}}</td>
+        <td>{{combatRecord.death}}</td>
+        <td>{{combatRecord.killDeathRaito}}</td>
+      </tr>
+    </table>
   </div>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>

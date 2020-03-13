@@ -50,6 +50,7 @@ new Vue({
     // selectedWeapon: '',
     killCount: '',
     deathCount: '',
+    combatRecords: [],
   },
   methods: {
     weaponTypeSelect() {
@@ -71,6 +72,16 @@ new Vue({
       const id = event.srcElement.dataset.id;
       this.selectedItems[id] = event.srcElement.value;
       // console.log(this.selectedItems);
-    }
+      console.log(this.combatRecords);
+    },
+    combatRecordSave() {
+      this.selectedItems.kill = this.killCount;
+      // console.log(this.selectedItems);
+      this.selectedItems.death = this.deathCount;
+      this.selectedItems.killDeathRaito = this.killCount / this.deathCount;
+      // console.log(this.selectedItems);
+      this.combatRecords.unshift(Object.assign({}, this.selectedItems));
+      console.log(this.combatRecords);
+    },
   }
 });
